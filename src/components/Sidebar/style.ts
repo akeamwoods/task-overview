@@ -55,4 +55,15 @@ export const FilterButton = styled.button<{ active: boolean }>`
 export const NewTaskButton = styled.button`
   background: ${Constants.newTodoButtonBg};
   border: none;
+  padding: 10px;
+  display: flex;
+  align-self: flex-start;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0px 2px 5px #666;
+  svg {
+    height: 22px;
+    width: 22px;
+    color: #fff;
+  }
 `;

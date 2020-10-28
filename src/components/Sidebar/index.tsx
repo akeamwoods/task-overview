@@ -1,6 +1,12 @@
 import { isToday } from "date-fns";
 import React from "react";
-import { FaCalendar, FaCheckCircle, FaList, FaStar } from "react-icons/fa";
+import {
+  FaCalendar,
+  FaCheckCircle,
+  FaList,
+  FaPlus,
+  FaStar,
+} from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../store";
 import { actions } from "../../store/actions";
@@ -61,7 +67,7 @@ export const Sidebar = () => {
         </FilterButton>
       </ButtonContainer>
       <NewTaskButton onClick={() => dispatch(actions.newTaskButtonClicked())}>
-        New Task
+        <FaPlus />
       </NewTaskButton>
     </Container>
   );
