@@ -16,7 +16,7 @@ const persistConfig = {
 
 const initialState = () => ({
   tasks: [] as Task[],
-  activeTask: undefined as undefined | Task,
+  activeTask: undefined as undefined | string,
 });
 
 export type State = Readonly<ReturnType<typeof initialState>>;
@@ -56,9 +56,9 @@ export const rootReducer: Reducer<State, Actions> = (
         break;
       }
       case getType(actions.taskPreviewClicked): {
-        if (!draft.activeTask || draft.activeTask.id !== action.payload) {
+        if (!draft.activeTask || draft.activeTask !== action.payload) {
           const task = draft.tasks.find((task) => task.id === action.payload);
-          if (task) draft.activeTask = task;
+          if (task) draft.activeTask = task.id;
         }
         break;
       }

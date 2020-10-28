@@ -1,11 +1,6 @@
 import React from "react";
 import { TaskPreview as TaskPreviewType } from "../../store/types";
-import {
-  FaCheckCircle,
-  FaRegCheckCircle,
-  FaRegStar,
-  FaStar,
-} from "react-icons/fa";
+import { FaCheckCircle, FaRegCircle, FaRegStar, FaStar } from "react-icons/fa";
 import {
   Container,
   Wrapper,
@@ -26,7 +21,7 @@ export const TaskPreview: React.FC<{ task: TaskPreviewType }> = ({ task }) => {
         <CheckButton
           onClick={() => dispatch(actions.taskCheckButtonClicked(task.id))}
         >
-          {task.isComplete ? <FaRegCheckCircle /> : <FaCheckCircle />}
+          {task.isComplete ? <FaCheckCircle /> : <FaRegCircle />}
         </CheckButton>
         <TextWrapper>
           <h4>{task.title}</h4>
