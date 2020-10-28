@@ -8,4 +8,36 @@ export const Container = styled.div`
   width: 200px;
   background: ${Constants.mainBg};
   border-right: 1px solid ${Constants.border};
+  justify-content: space-between;
+`;
+
+export const ButtonContainer = styled.nav`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  svg {
+    margin-right: 20px;
+    height: 22px;
+    width: 22px;
+  }
+`;
+
+export const FilterButton = styled.button<{ active: boolean }>`
+  ${(props) =>
+    props.active &&
+    `
+  font-weight:bold;
+`}
+  display: flex;
+  font-size: 1em;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  margin-top: 20px;
+  :hover {
+    font-weight: bold;
+  }
 `;

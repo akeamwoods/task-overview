@@ -11,3 +11,5 @@ export type TaskPreview = Pick<
   Task,
   "id" | "title" | "isComplete" | "isImportant" | "date"
 >;
+
+export type TaskFilter = "all" | "today" | "important" | "complete";
