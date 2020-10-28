@@ -26,9 +26,29 @@ export const rootReducer: Reducer<State, Actions> = (
 ) =>
   produce(state, (draft) => {
     switch (action.type) {
-      case getType(actions.newTaskAdded):
+      case getType(actions.newTaskAdded): {
         draft.tasks = [...draft.tasks, action.payload];
         break;
+      }
+      case getType(actions.newTaskButtonClicked): {
+        draft.tasks = [
+          ...draft.tasks,
+          {
+            id: (draft.tasks.length + 1).toString(),
+            content: "Here be a task",
+            date: new Date().toISOString(),
+            isComplete: false,
+            isImportant: false,
+            title: "Task Title",
+          },
+        ];
+        break;
+      }
+      case getType(actions.taskCheckButtonClicked): {
+        const task = draft.tasks.find((task) => task.id === action.payload);
+        if (task) task.isComplete = !task.isComplete;
+        break;
+      }
     }
   });
 

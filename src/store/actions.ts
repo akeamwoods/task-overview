@@ -2,11 +2,15 @@ import { ActionType, createAction } from "typesafe-actions";
 import { Task } from "./types";
 
 const newTaskAdded = createAction("new task added")<Task>();
-const signUpButtonClicked = createAction("sign up button clicked")();
+const newTaskButtonClicked = createAction("new task button clicked")();
+const taskCheckButtonClicked = createAction("task check button clicked")<
+  string
+>();
 
 export const actions = {
   newTaskAdded,
-  signUpButtonClicked,
+  newTaskButtonClicked,
+  taskCheckButtonClicked,
 };
 
 export type Actions = ActionType<typeof actions>;
