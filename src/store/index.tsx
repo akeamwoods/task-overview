@@ -79,6 +79,9 @@ export const rootReducer: Reducer<State, Actions> = (
             case "complete":
               if (!task.isComplete) draft.activeTask = undefined;
               break;
+            case "incomplete":
+              if (task.isComplete) draft.activeTask = undefined;
+              break;
             case "important":
               if (!task.isImportant) draft.activeTask = undefined;
               break;

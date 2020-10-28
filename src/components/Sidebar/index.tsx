@@ -3,6 +3,7 @@ import React from "react";
 import {
   FaCalendar,
   FaCheckCircle,
+  FaRegCircle,
   FaList,
   FaPlus,
   FaStar,
@@ -64,6 +65,16 @@ export const Sidebar = () => {
             Complete
           </span>
           <h4>{tasks.filter((task) => task.isComplete).length}</h4>
+        </FilterButton>
+        <FilterButton
+          active={filter === "incomplete"}
+          onClick={() => dispatch(actions.newFilterPressed("incomplete"))}
+        >
+          <span>
+            <FaRegCircle />
+            Incomplete
+          </span>
+          <h4>{tasks.filter((task) => !task.isComplete).length}</h4>
         </FilterButton>
       </ButtonContainer>
       <NewTaskButton onClick={() => dispatch(actions.newTaskButtonClicked())}>

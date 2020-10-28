@@ -13,9 +13,11 @@ export const Listbox = () => {
       {tasks
         .filter(
           filter === "complete"
-            ? (task) => task.isComplete === true
+            ? (task) => task.isComplete
+            : filter === "incomplete"
+            ? (task) => !task.isComplete
             : filter === "important"
-            ? (tasks) => tasks.isImportant === true
+            ? (tasks) => tasks.isImportant
             : filter === "today"
             ? (task) => isToday(new Date(task.date))
             : (task) => task
