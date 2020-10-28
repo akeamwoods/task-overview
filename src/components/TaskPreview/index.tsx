@@ -21,7 +21,7 @@ export const TaskPreview: React.FC<{ task: TaskPreviewType }> = ({ task }) => {
   const dispatch = useDispatch();
   const date = new Date(task.date);
   return (
-    <Container>
+    <Container onClick={() => dispatch(actions.taskPreviewClicked(task.id))}>
       <Wrapper>
         <CheckButton
           onClick={() => dispatch(actions.taskCheckButtonClicked(task.id))}

@@ -7,5 +7,5 @@ export const Container = styled.div`
   flex: 1;
   padding: 20px;
   background: ${Constants.mainBg};
-  border: 1px solid ${Constants.border};
+  border-left: 1px solid ${Constants.border};
 `;

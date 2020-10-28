@@ -7,5 +7,5 @@ export const Container = styled.div`
   padding: 20px;
   width: 200px;
   background: ${Constants.mainBg};
-  border: 1px solid ${Constants.border};
+  border-right: 1px solid ${Constants.border};
 `;

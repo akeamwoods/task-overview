@@ -7,6 +7,9 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 20px;
   border-bottom: 1px solid ${Constants.listboxBorder};
+  :hover {
+    background: ${Constants.highlght};
+  }
 `;
 
 export const Wrapper = styled.div`

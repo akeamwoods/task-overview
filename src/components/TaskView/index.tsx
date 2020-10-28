@@ -1,6 +1,8 @@
 import React from "react";
+import { useTypedSelector } from "../../store";
 import { Container } from "./style";
 
 export const TaskView = () => {
-  return <Container>TaskView</Container>;
+  const task = useTypedSelector((state) => state.activeTask);
+  return task ? <Container>test</Container> : null;
 };
