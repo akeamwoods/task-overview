@@ -9,15 +9,3 @@ export const Container = styled.div`
   background: ${Constants.mainBg};
   border-left: 1px solid ${Constants.border};
 `;
-
-export const CheckButton = styled.button`
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  background: none;
-  svg {
-    height: 32px;
-    width: 32px;
-    color: ${Constants.todoButtonBg};
-  }
-`;

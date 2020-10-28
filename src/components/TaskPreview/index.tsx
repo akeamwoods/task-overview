@@ -1,44 +1,20 @@
 import React from "react";
 import { TaskPreview as TaskPreviewType } from "../../store/types";
-import { FaCheckCircle, FaRegCircle, FaRegStar, FaStar } from "react-icons/fa";
-import {
-  Container,
-  Wrapper,
-  CheckButton,
-  TextWrapper,
-  StarButton,
-} from "./style";
+import { Container } from "./style";
 import { useDispatch } from "react-redux";
-import { formatRelative, isToday, isTomorrow } from "date-fns";
 import { actions } from "../../store/actions";
+import { TaskHeader } from "../TaskHeader";
 
 export const TaskPreview: React.FC<{ task: TaskPreviewType }> = ({ task }) => {
   const dispatch = useDispatch();
-  const date = new Date(task.date);
   return (
-    <Container onClick={() => dispatch(actions.taskPreviewClicked(task.id))}>
-      <Wrapper>
-        <CheckButton
-          onClick={() => dispatch(actions.taskCheckButtonClicked(task.id))}
-        >
-          {task.isComplete ? <FaCheckCircle /> : <FaRegCircle />}
-        </CheckButton>
-        <TextWrapper>
-          <h4>{task.title}</h4>
-          <p>
-            {isToday(date)
-              ? "Today"
-              : isTomorrow(date)
-              ? "Tomorrow"
-              : formatRelative(new Date(task.date), new Date())}
-          </p>
-        </TextWrapper>
-      </Wrapper>
-      <StarButton
-        onClick={() => dispatch(actions.taskStarButtonClicked(task.id))}
-      >
-        {task.isImportant ? <FaStar /> : <FaRegStar />}
-      </StarButton>
+    <Container
+      onClick={(e) => {
+        e.stopPropagation();
+        dispatch(actions.taskPreviewClicked(task.id));
+      }}
+    >
+      <TaskHeader task={task} />
     </Container>
   );
 };
