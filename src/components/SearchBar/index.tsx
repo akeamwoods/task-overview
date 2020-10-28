@@ -1,6 +1,12 @@
 import React from "react";
-import { Input } from "./style";
+import { FaSearch } from "react-icons/fa";
+import { IconContainer } from "./style";
 
 export const SearchBar = () => {
-  return <Input placeholder="Search..."></Input>;
+  return (
+    <IconContainer>
+      <FaSearch />
+      <input placeholder="Search..."></input>
+    </IconContainer>
+  );
 };
