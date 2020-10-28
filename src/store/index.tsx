@@ -49,6 +49,11 @@ export const rootReducer: Reducer<State, Actions> = (
         if (task) task.isComplete = !task.isComplete;
         break;
       }
+      case getType(actions.taskStarButtonClicked): {
+        const task = draft.tasks.find((task) => task.id === action.payload);
+        if (task) task.isImportant = !task.isImportant;
+        break;
+      }
     }
   });
 

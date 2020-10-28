@@ -14,4 +14,5 @@ export const Container = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   flex: 1;
+  overflow: hidden;
 `;

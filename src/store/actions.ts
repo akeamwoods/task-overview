@@ -6,11 +6,15 @@ const newTaskButtonClicked = createAction("new task button clicked")();
 const taskCheckButtonClicked = createAction("task check button clicked")<
   string
 >();
+const taskStarButtonClicked = createAction("task star button clicked")<
+  string
+>();
 
 export const actions = {
   newTaskAdded,
   newTaskButtonClicked,
   taskCheckButtonClicked,
+  taskStarButtonClicked,
 };
 
 export type Actions = ActionType<typeof actions>;

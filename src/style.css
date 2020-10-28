@@ -5,3 +5,7 @@ body,
   height: 100%;
   margin: 0;
 }
+
+body {
+  font: 15px/22px Inter, system-ui, sans-serif;
+}
