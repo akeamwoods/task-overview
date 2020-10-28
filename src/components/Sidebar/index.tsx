@@ -1,13 +1,20 @@
+import { isToday } from "date-fns";
 import React from "react";
 import { FaCalendar, FaCheckCircle, FaList, FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../store";
 import { actions } from "../../store/actions";
-import { Container, ButtonContainer, FilterButton } from "./style";
+import {
+  Container,
+  ButtonContainer,
+  FilterButton,
+  NewTaskButton,
+} from "./style";
 
 export const Sidebar = () => {
   const dispatch = useDispatch();
   const filter = useTypedSelector((state) => state.filter);
+  const tasks = useTypedSelector((state) => state.tasks);
   return (
     <Container>
       <h3>TaskOverview</h3>
@@ -16,34 +23,46 @@ export const Sidebar = () => {
           active={filter === "all"}
           onClick={() => dispatch(actions.newFilterPressed("all"))}
         >
-          <FaList />
-          All
+          <span>
+            <FaList />
+            All
+          </span>
+          <h4>{tasks.length}</h4>
         </FilterButton>
         <FilterButton
           active={filter === "today"}
           onClick={() => dispatch(actions.newFilterPressed("today"))}
         >
-          <FaStar />
-          Today
+          <span>
+            <FaStar />
+            Today
+          </span>
+          <h4>{tasks.filter((task) => isToday(new Date(task.date))).length}</h4>
         </FilterButton>
         <FilterButton
           active={filter === "important"}
           onClick={() => dispatch(actions.newFilterPressed("important"))}
         >
-          <FaCalendar />
-          Important
+          <span>
+            <FaCalendar />
+            Important
+          </span>
+          <h4>{tasks.filter((task) => task.isImportant).length}</h4>
         </FilterButton>
         <FilterButton
           active={filter === "complete"}
           onClick={() => dispatch(actions.newFilterPressed("complete"))}
         >
-          <FaCheckCircle />
-          Complete
+          <span>
+            <FaCheckCircle />
+            Complete
+          </span>
+          <h4>{tasks.filter((task) => task.isComplete).length}</h4>
         </FilterButton>
       </ButtonContainer>
-      <button onClick={() => dispatch(actions.newTaskButtonClicked())}>
+      <NewTaskButton onClick={() => dispatch(actions.newTaskButtonClicked())}>
         New Task
-      </button>
+      </NewTaskButton>
     </Container>
   );
 };

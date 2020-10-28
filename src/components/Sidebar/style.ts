@@ -32,12 +32,27 @@ export const FilterButton = styled.button<{ active: boolean }>`
   display: flex;
   font-size: 1em;
   background: none;
+  align-self: stretch;
   outline: none;
   border: none;
   cursor: pointer;
   align-items: center;
+  justify-content: space-between;
   margin-top: 20px;
+  span {
+    display: flex;
+    align-items: center;
+  }
   :hover {
     font-weight: bold;
   }
+  h4 {
+    margin: 0;
+    align-self: center;
+  }
+`;
+
+export const NewTaskButton = styled.button`
+  background: ${Constants.newTodoButtonBg};
+  border: none;
 `;
