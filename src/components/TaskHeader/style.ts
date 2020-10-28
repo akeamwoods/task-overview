@@ -45,3 +45,15 @@ export const TextWrapper = styled.div`
     color: ${Constants.text};
   }
 `;
+
+export const DateWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  p {
+    color: ${Constants.lightText};
+  }
+  svg {
+    color: ${Constants.lightText};
+    margin-right: 5px;
+  }
+`;

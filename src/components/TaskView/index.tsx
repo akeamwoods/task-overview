@@ -9,7 +9,7 @@ export const TaskView = () => {
   );
   return task ? (
     <Container>
-      <span>
+      <span style={{ marginBottom: "20px" }}>
         <TaskHeader task={task} />
       </span>
 

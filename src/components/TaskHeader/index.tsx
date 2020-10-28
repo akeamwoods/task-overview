@@ -1,12 +1,19 @@
 import React from "react";
 import { TaskPreview as TaskPreviewType } from "../../store/types";
-import { FaCheckCircle, FaRegCircle, FaRegStar, FaStar } from "react-icons/fa";
+import {
+  FaCalendar,
+  FaCheckCircle,
+  FaRegCircle,
+  FaRegStar,
+  FaStar,
+} from "react-icons/fa";
 import {
   Wrapper,
   CheckButton,
   TextWrapper,
   StarButton,
   Container,
+  DateWrapper,
 } from "./style";
 import { useDispatch } from "react-redux";
 import { formatRelative, isToday, isTomorrow } from "date-fns";
@@ -28,13 +35,16 @@ export const TaskHeader: React.FC<{ task: TaskPreviewType }> = ({ task }) => {
         </CheckButton>
         <TextWrapper>
           <h4>{task.title}</h4>
-          <p>
-            {isToday(date)
-              ? "Today"
-              : isTomorrow(date)
-              ? "Tomorrow"
-              : formatRelative(new Date(task.date), new Date())}
-          </p>
+          <DateWrapper>
+            <FaCalendar />
+            <p>
+              {isToday(date)
+                ? "Today"
+                : isTomorrow(date)
+                ? "Tomorrow"
+                : formatRelative(new Date(task.date), new Date())}
+            </p>
+          </DateWrapper>
         </TextWrapper>
       </Wrapper>
       <StarButton
