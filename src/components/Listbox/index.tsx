@@ -9,7 +9,7 @@ export const Listbox = () => {
   return (
     <Container>
       {tasks.map((task) => (
-        <TaskPreview task={task} />
+        <TaskPreview key={task.id} task={task} />
       ))}
     </Container>
   );
