@@ -7,6 +7,7 @@ import storage from "redux-persist/lib/storage"; // defaults to localStorage for
 import { composeWithDevTools } from "redux-devtools-extension";
 import { Actions, actions } from "./actions";
 import { Task, TaskFilter } from "./types";
+import { isToday } from "date-fns";
 
 const persistConfig = {
   key: "root",
@@ -67,6 +68,23 @@ export const rootReducer: Reducer<State, Actions> = (
 
       case getType(actions.newFilterPressed): {
         draft.filter = action.payload;
+
+        const task = draft.tasks.find((task) => task.id === draft.activeTask);
+
+        if (draft.activeTask && task && draft.filter !== "all") {
+          switch (draft.filter) {
+            case "today":
+              if (!isToday(new Date(task.date))) draft.activeTask = undefined;
+              break;
+            case "complete":
+              if (!task.isComplete) draft.activeTask = undefined;
+              break;
+            case "important":
+              if (!task.isImportant) draft.activeTask = undefined;
+              break;
+          }
+        }
+
         break;
       }
     }
