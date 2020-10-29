@@ -54,6 +54,6 @@ export const DateWrapper = styled.div`
   }
   svg {
     color: ${Constants.lightText};
-    margin-right: 5px;
+    margin-right: 10px;
   }
 `;

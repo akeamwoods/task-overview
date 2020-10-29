@@ -17,4 +17,5 @@ export type TaskFilter =
   | "today"
   | "important"
   | "complete"
-  | "incomplete";
+  | "incomplete"
+  | "expired";

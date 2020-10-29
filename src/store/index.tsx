@@ -7,7 +7,7 @@ import storage from "redux-persist/lib/storage"; // defaults to localStorage for
 import { composeWithDevTools } from "redux-devtools-extension";
 import { Actions, actions } from "./actions";
 import { Task, TaskFilter } from "./types";
-import { isToday } from "date-fns";
+import { endOfDay, isPast, isToday } from "date-fns";
 
 const persistConfig = {
   key: "root",
@@ -84,6 +84,10 @@ export const rootReducer: Reducer<State, Actions> = (
               break;
             case "important":
               if (!task.isImportant) draft.activeTask = undefined;
+              break;
+            case "expired":
+              if (!isPast(endOfDay(new Date(task.date))))
+                draft.activeTask = undefined;
               break;
           }
         }

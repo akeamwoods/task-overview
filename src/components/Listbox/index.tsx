@@ -21,9 +21,15 @@ export const Listbox = () => {
             ? (tasks) => tasks.isImportant
             : filter === "today"
             ? (task) => isToday(new Date(task.date))
+            : filter === "expired"
+            ? (task) => isPast(endOfDay(new Date(task.date)))
             : (task) => task
         )
-        .filter((task) => !isPast(endOfDay(new Date(task.date))))
+        .filter((task) =>
+          filter !== "expired"
+            ? !isPast(endOfDay(new Date(task.date)))
+            : isPast(endOfDay(new Date(task.date)))
+        )
         .sort(function (a, b) {
           return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
         })
