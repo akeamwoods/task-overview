@@ -7,4 +7,5 @@ export const Container = styled.div`
   width: 400px;
   background: ${Constants.listboxItemBg};
   overflow: auto;
+  border-right: 1px solid ${Constants.border};
 `;

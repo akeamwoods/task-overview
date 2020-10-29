@@ -7,7 +7,6 @@ export const Container = styled.div`
   flex: 1;
   padding: 20px;
   background: ${Constants.mainBg};
-  border-left: 1px solid ${Constants.border};
   overflow: auto;
 `;
 
