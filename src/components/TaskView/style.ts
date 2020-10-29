@@ -8,4 +8,9 @@ export const Container = styled.div`
   padding: 20px;
   background: ${Constants.mainBg};
   border-left: 1px solid ${Constants.border};
+  overflow: auto;
+`;
+
+export const Content = styled.span`
+  white-space: pre-wrap;
 `;

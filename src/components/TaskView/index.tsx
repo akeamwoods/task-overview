@@ -1,7 +1,7 @@
 import React from "react";
 import { useTypedSelector } from "../../store";
 import { TaskHeader } from "../TaskHeader";
-import { Container } from "./style";
+import { Container, Content } from "./style";
 
 export const TaskView = () => {
   const task = useTypedSelector((state) =>
@@ -13,7 +13,7 @@ export const TaskView = () => {
         <TaskHeader task={task} />
       </span>
 
-      <span>{task.content}</span>
+      <Content>{task.content}</Content>
     </Container>
   ) : null;
 };

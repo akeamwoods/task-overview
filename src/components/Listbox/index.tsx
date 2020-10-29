@@ -1,4 +1,5 @@
-import { isToday } from "date-fns";
+import { isToday, isPast, endOfDay } from "date-fns";
+
 import React from "react";
 import { useTypedSelector } from "../../store";
 import { TaskPreview } from "../TaskPreview";
@@ -22,6 +23,10 @@ export const Listbox = () => {
             ? (task) => isToday(new Date(task.date))
             : (task) => task
         )
+        .filter((task) => !isPast(endOfDay(new Date(task.date))))
+        .sort(function (a, b) {
+          return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+        })
         .map((task) => (
           <TaskPreview key={task.id} task={task} />
         ))}
