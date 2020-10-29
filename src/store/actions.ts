@@ -11,6 +11,9 @@ const taskStarButtonClicked = createAction("task star button clicked")<
 >();
 const taskPreviewClicked = createAction("task preview clicked")<string>();
 const newFilterPressed = createAction("new filter pressed")<TaskFilter>();
+const deleteTaskButtonPrssed = createAction("delete task button pressed")<
+  string
+>();
 
 export const actions = {
   newTaskAdded,
@@ -19,6 +22,7 @@ export const actions = {
   taskStarButtonClicked,
   taskPreviewClicked,
   newFilterPressed,
+  deleteTaskButtonPrssed,
 };
 
 export type Actions = ActionType<typeof actions>;

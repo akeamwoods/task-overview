@@ -12,7 +12,6 @@ export const TaskView = () => {
       <span style={{ marginBottom: "20px" }}>
         <TaskHeader task={task} />
       </span>
-
       <Content>{task.content}</Content>
     </Container>
   ) : null;

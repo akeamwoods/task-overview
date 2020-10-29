@@ -35,6 +35,10 @@ export const StarButton = styled.button`
   }
 `;
 
+export const TrashButton = styled(StarButton)`
+  margin-left: 10px;
+`;
+
 export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;

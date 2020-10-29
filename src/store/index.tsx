@@ -67,7 +67,7 @@ export const rootReducer: Reducer<State, Actions> = (
       }
 
       case getType(actions.newFilterPressed): {
-        draft.filter = action.payload;
+        draft.filter = action.payload as TaskFilter;
 
         const task = draft.tasks.find((task) => task.id === draft.activeTask);
 
@@ -92,6 +92,10 @@ export const rootReducer: Reducer<State, Actions> = (
           }
         }
 
+        break;
+      }
+      case getType(actions.deleteTaskButtonPrssed): {
+        draft.tasks = draft.tasks.filter((task) => task.id !== action.payload);
         break;
       }
     }

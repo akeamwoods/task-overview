@@ -6,12 +6,14 @@ import {
   FaRegCircle,
   FaRegStar,
   FaStar,
+  FaTrash,
 } from "react-icons/fa";
 import {
   Wrapper,
   CheckButton,
   TextWrapper,
   StarButton,
+  TrashButton,
   Container,
   DateWrapper,
 } from "./style";
@@ -47,14 +49,21 @@ export const TaskHeader: React.FC<{ task: TaskPreviewType }> = ({ task }) => {
           </DateWrapper>
         </TextWrapper>
       </Wrapper>
-      <StarButton
-        onClick={(e) => {
-          e.stopPropagation();
-          dispatch(actions.taskStarButtonClicked(task.id));
-        }}
-      >
-        {task.isImportant ? <FaStar /> : <FaRegStar />}
-      </StarButton>
+      <Wrapper>
+        <StarButton
+          onClick={(e) => {
+            e.stopPropagation();
+            dispatch(actions.taskStarButtonClicked(task.id));
+          }}
+        >
+          {task.isImportant ? <FaStar /> : <FaRegStar />}
+        </StarButton>
+        <TrashButton
+          onClick={() => dispatch(actions.deleteTaskButtonPrssed(task.id))}
+        >
+          <FaTrash />
+        </TrashButton>
+      </Wrapper>
     </Container>
   );
 };
