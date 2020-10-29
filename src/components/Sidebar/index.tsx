@@ -1,5 +1,5 @@
 import { isToday } from "date-fns";
-import React from "react";
+import React, { useState } from "react";
 import {
   FaCalendar,
   FaCheckCircle,
@@ -11,6 +11,8 @@ import {
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../store";
 import { actions } from "../../store/actions";
+import { NewTaskModal } from "../NewTaskModal";
+import { Popup } from "../Popup";
 import {
   Container,
   ButtonContainer,
@@ -20,10 +22,14 @@ import {
 
 export const Sidebar = () => {
   const dispatch = useDispatch();
+  const [isVisible, setVisibility] = useState(false);
   const filter = useTypedSelector((state) => state.filter);
   const tasks = useTypedSelector((state) => state.tasks);
   return (
     <Container>
+      <Popup isVisible={isVisible} onClick={() => setVisibility(false)}>
+        <NewTaskModal onCancel={() => setVisibility(false)} />
+      </Popup>
       <h3>TaskOverview</h3>
       <ButtonContainer>
         <FilterButton
@@ -77,7 +83,7 @@ export const Sidebar = () => {
           <h4>{tasks.filter((task) => !task.isComplete).length}</h4>
         </FilterButton>
       </ButtonContainer>
-      <NewTaskButton onClick={() => dispatch(actions.newTaskButtonClicked())}>
+      <NewTaskButton onClick={() => setVisibility(true)}>
         <FaPlus />
       </NewTaskButton>
     </Container>
