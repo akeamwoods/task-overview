@@ -14,6 +14,7 @@ const newFilterPressed = createAction("new filter pressed")<TaskFilter>();
 const deleteTaskButtonPrssed = createAction("delete task button pressed")<
   string
 >();
+const searchQueryUpdated = createAction("search query updated")<string>();
 
 export const actions = {
   newTaskAdded,
@@ -23,6 +24,7 @@ export const actions = {
   taskPreviewClicked,
   newFilterPressed,
   deleteTaskButtonPrssed,
+  searchQueryUpdated,
 };
 
 export type Actions = ActionType<typeof actions>;

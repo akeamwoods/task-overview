@@ -12,13 +12,14 @@ import { endOfDay, isPast, isToday } from "date-fns";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["activeTask", "filter"],
+  blacklist: ["activeTask", "filter", "searchTerm"],
 };
 
 const initialState = () => ({
   tasks: [] as Task[],
   activeTask: undefined as undefined | string,
   filter: "all" as TaskFilter,
+  searchTerm: "",
 });
 
 export type State = Readonly<ReturnType<typeof initialState>>;
@@ -96,6 +97,10 @@ export const rootReducer: Reducer<State, Actions> = (
       }
       case getType(actions.deleteTaskButtonPrssed): {
         draft.tasks = draft.tasks.filter((task) => task.id !== action.payload);
+        break;
+      }
+      case getType(actions.searchQueryUpdated): {
+        draft.searchTerm = action.payload;
         break;
       }
     }

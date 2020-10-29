@@ -9,6 +9,7 @@ import { Container } from "./style";
 export const Listbox = () => {
   const tasks = useTypedSelector((state) => state.tasks);
   const filter = useTypedSelector((state) => state.filter);
+  const searchQuery = useTypedSelector((state) => state.searchTerm);
   return (
     <Container>
       {tasks
@@ -29,6 +30,9 @@ export const Listbox = () => {
           filter !== "expired"
             ? !isPast(endOfDay(new Date(task.date)))
             : isPast(endOfDay(new Date(task.date)))
+        )
+        .filter((task) =>
+          task.title.toLowerCase().includes(searchQuery.toLowerCase())
         )
         .sort(function (a, b) {
           return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
